@@ -1,0 +1,104 @@
+/* Global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+/* Body styles */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(45deg, #0d1b2a, #1a3b5d);
+    background-size: 400% 400%;
+    animation: gradientShift 10s ease infinite;
+    position: relative;
+}
+
+/* Floating bubbles */
+.bubble {
+    position: absolute;
+    bottom: -50px;
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: float 6s linear infinite;
+}
+
+/* Eye-catching message */
+.message {
+    position: absolute;
+    top: 20%;
+    color: #ffffff;
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 0 0 10px #ff5c93, 0 0 20px #ff66c4;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid #ff66c4;
+    animation: typing 3s steps(20) 1s forwards, blink 0.5s step-end infinite alternate;
+}
+
+/* Moving background layer for parallax */
+.layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('stars.png') repeat;
+    z-index: -1;
+    animation: move 20s linear infinite;
+}
+
+/* Keyframes for animations */
+@keyframes float {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) scale(0.5);
+        opacity: 0;
+    }
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink {
+    from { border-color: transparent; }
+    to { border-color: #ff66c4; }
+}
+
+@keyframes move {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .bubble {
+        width: 10px;
+        height: 10px;
+        animation-duration: 8s;
+    }
+    .message {
+        font-size: 2rem;
+    }
+}
